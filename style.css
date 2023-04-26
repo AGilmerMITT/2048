@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: gainsboro;
+}
+main {
+  margin: 0 28rem;
+}
+
+.square {
+  background-color: lightgray;
+  border: 0.25rem solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1/1;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  background-color: gray;
+  border: solid 3px black;
+  border-radius: 0.5rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 5rem;
+}
+
+#reset {
+  background-color: lightgray;
+
+  padding: 1rem;
+  margin: 1rem;
+  border: solid 3px black;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
