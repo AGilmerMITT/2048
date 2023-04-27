@@ -56,46 +56,51 @@ function handleInput(key) {
 }
 
 function moveUp() {
-  // iterate over all of our cells
-  // for each cell, try to move it up one
-  // combine as necessary
+  // axis of movement: vertical
+  // for each column, iterate in opposite direction
+  // "moveUp" means we iterate downward (incrementing)
+  // starting from second last cell
+  // if a cell was moved, repeat this column
 
-  let cellWasChanged = false;
+  let cellChanged = false;
 
-  for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
-      if (i == 0)
-        continue;
+  for (let col = 0; col < 4; col++) {
+    let columnChanged = false;
+    for (let i = 1; i < 4; i++) {
+      const curCell = gameState.cells[i][col];
+      const aboveCell = gameState.cells[i - 1][col];
 
-      let cellAbove = gameState.cells[i - 1][j];
-      let curCell = gameState.cells[i][j];
-
-      if (cellAbove.value == null) {
-        gameState.cells[i - 1][j] = curCell;
-        gameState.cells[i][j] = new Cell(null);
-        cellWasChanged = true;
+      if (curCell.value !== null && aboveCell.value === null) {
+        // can safely slide up
+        aboveCell.value = curCell.value;
+        curCell.value = null;
+        columnChanged = true;
+        cellChanged = true;
       }
 
-      if (cellAbove.value == curCell.value) {
-        cellAbove.value *= 2;
-        gameState.cells[i][j] = new Cell(null);
+      if (curCell.value === aboveCell.value && aboveCell.value !== null) {
+        // equal value collision: merge
+        aboveCell.value *= 2;
+        curCell.value = null;
+        columnChanged = true;
+        cellChanged = true;
       }
     }
-    if (cellWasChanged) {
-      i--;
-      cellWasChanged = false;
+
+    if (columnChanged) {
+      // repeat column until no changes
+      col--;
     }
   }
 
+  return cellChanged;
 }
 
-function moveDown() {
-
-}
+function moveDown() {}
 
 function moveLeft() {}
 
-function moveRigbht() {}
+function moveRight() {}
 
 
 // render();
