@@ -1,3 +1,17 @@
+STYLE_CLASSES = {
+     2: "cell-has-value cell-value-style-2",
+     4: "cell-has-value cell-value-style-4",
+     8: "cell-has-value cell-value-style-8",
+    16: "cell-has-value cell-value-style-16",
+    32: "cell-has-value cell-value-style-32",
+    64: "cell-has-value cell-value-style-64",
+   128: "cell-has-value cell-value-style-128",
+   256: "cell-has-value cell-value-style-256",
+   512: "cell-has-value cell-value-style-512",
+  1024: "cell-has-value cell-value-style-1024",
+  2048: "cell-has-value cell-value-style-2048",
+};
+
 class Cell {
   constructor(num) {
     this.value = num;
@@ -27,8 +41,9 @@ function render() {
 
   for (let row of gameState.cells) {
     for (let cell of row) {
+      const classes = cell.value in STYLE_CLASSES ? STYLE_CLASSES[cell.value] : "";
       boardElem.insertAdjacentHTML("beforeend", `
-        <div class="square">${cell.value ?? ""}</div>
+        <div class="square ${classes}">${cell.value ?? ""}</div>
       `);
     }
   }

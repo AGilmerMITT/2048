@@ -57,3 +57,41 @@ main {
   border-radius: 0.5rem;
   font-weight: bold;
 }
+
+.cell-has-value {
+  color: white;
+}
+
+.cell-value-style-2 {
+  background-color: #1e7598;
+}
+.cell-value-style-4 {
+  background-color: #326d94;
+}
+.cell-value-style-8 {
+  background-color: #3b6992;
+}
+.cell-value-style-16 {
+  background-color: #4b638f;
+}
+.cell-value-style-32 {
+  background-color: #64598a;
+}
+.cell-value-style-64 {
+  background-color: #765286;
+}
+.cell-value-style-128 {
+  background-color: #884b82;
+}
+.cell-value-style-256 {
+  background-color: #98457f;
+}
+.cell-value-style-512 {
+  background-color: #aa3e7c;
+}
+.cell-value-style-1024 {
+  background-color: #c03578;
+}
+.cell-value-style-2048 {
+  background-color: #ff1b6b;
+}
