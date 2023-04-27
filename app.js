@@ -34,6 +34,16 @@ function render() {
   }
 }
 
+function resetGame() {
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      gameState.cells[i][j].value = null;
+    }
+  }
+
+  generateNewCell();
+}
+
 function getRandomEmptyCell() {
   const emptyList = [];
 
@@ -262,4 +272,10 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+document.getElementById('reset').addEventListener('click', (event) => {
+  resetGame();
+  render();
+});
+
+resetGame();
 render();
