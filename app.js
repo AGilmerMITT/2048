@@ -34,24 +34,52 @@ function render() {
   }
 }
 
+function getRandomEmptyCell() {
+  const emptyList = [];
+
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      if (gameState.cells[i][j].value === null) {
+        emptyList.push([i, j]);
+      }
+    }
+  }
+
+  return emptyList[
+    Math.floor(Math.random() * emptyList.length)
+  ];
+}
+
+function generateNewCell() {
+  [row, col] = getRandomEmptyCell();
+  
+  const newCellValue = Math.random() > 0.67 ? 4 : 2;
+  gameState.cells[row][col] = new Cell(newCellValue);
+}
+
 function handleInput(key) {
-  console.log(key);
+  let cellMoved = false;
+
   switch (key) {
     case "ArrowUp":
-      moveUp();
+      cellMoved = moveUp();
       break;
     
     case "ArrowDown":
-      moveDown();
+      cellMoved = moveDown();
       break;
     
     case "ArrowLeft":
-      moveLeft();
+      cellMoved = moveLeft();
       break;
     
     case "ArrowRight":
-      moveRight();
+      cellMoved = moveRight();
       break;
+  }
+
+  if (cellMoved) {
+    generateNewCell();
   }
 }
 
@@ -223,7 +251,6 @@ function moveRight() {
 // render();
 
 document.addEventListener('keydown', (event) => {
-  console.log(event);
   if (event.key == "ArrowLeft"
   || event.key == "ArrowRight"
   || event.key == "ArrowUp"
