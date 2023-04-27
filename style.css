@@ -30,6 +30,7 @@ main {
   margin: auto;
   aspect-ratio: 1/1;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 1rem;
   padding: 1rem;
   background-color: gray;
